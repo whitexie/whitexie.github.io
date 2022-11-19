@@ -11,7 +11,9 @@
   
   <title>
     
-      幺叁叁
+      标签 
+       : Vue
+      
     
   </title>
 
@@ -29,10 +31,6 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/iconfont/iconfont.css">
 
-
-  
-    
-<link rel="stylesheet" href="/css/index.css">
 
   
 
@@ -72,55 +70,55 @@
 
 
       <div class="main">
-        <div>
-  <ul>
-    <!-- 遍历渲染文章 -->
+        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+
+<!-- last: 按年份把文章分组，当前遍历到的年份 -->
+<!-- now: 当前遍历到的文章的发布年份 -->
+
+<div class="container archives">
+  <div class="post-list">
     
-    <li>
-      <h3>Nov 19, 2022</h3>
-      <h2>
-        <a href="/2022/11/19/hello-world/">
-          
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2022</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="Hello World">
+        <div class="time-m-d">11-19</div>
+        <div class="title">
+          <a href="/2022/11/19/hello-world/">
             
               <span>Hello World</span>
             
-          
-        </a>
-      </h2>
-    </li>
+          </a>
+        </div>
+      </div>
     
-    <li>
-      <h3>Nov 18, 2022</h3>
-      <h2>
-        <a href="/2022/11/18/%E5%9F%BA%E4%BA%8EVant%E7%9A%84List%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/">
-          
+      <div class="post-item" title="基于Vant的List组件二次封装">
+        <div class="time-m-d">11-18</div>
+        <div class="title">
+          <a href="/2022/11/18/%E5%9F%BA%E4%BA%8EVant%E7%9A%84List%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/">
             
               <span>基于Vant的List组件二次封装</span>
             
-          
-        </a>
-      </h2>
-    </li>
+          </a>
+        </div>
+      </div>
     
-    <li>
-      <h3>Nov 18, 2022</h3>
-      <h2>
-        <a href="/2022/11/18/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-          
+      <div class="post-item" title="hexo 常用命令">
+        <div class="time-m-d">11-18</div>
+        <div class="title">
+          <a href="/2022/11/18/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
             
               <span>hexo 常用命令</span>
             
-          
-        </a>
-      </h2>
-    </li>
+          </a>
+        </div>
+      </div>
     
-  </ul>
-  
-  <nav class="post-navigation">
-    
-    
-  </nav>
+  </div>
 </div>
 
         <div class="footer">
