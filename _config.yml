@@ -107,10 +107,5 @@ theme: leedom
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-- type: 'git'
-  repo: git@github.com:whitexie/whiteixe.github.io.git
-  branch: gh-pages
+# deploy:
 # - type: 'git'
-#   repo: git@gitee.com:shieber/blog.git
-#   branch: gh-pages
