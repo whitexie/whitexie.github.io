@@ -1,0 +1,28 @@
+{
+  "name": "whitexie.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Ysansan",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.5"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.12.2",
+    "eslint": "^9.0.0",
+    "eslint-plugin-format": "^0.1.0",
+    "fs-extra": "^11.2.0",
+    "globby": "^14.0.1",
+    "gray-matter": "^4.0.3",
+    "less": "^4.2.0",
+    "path": "^0.12.7",
+    "vitepress": "^1.0.2",
+    "vue": "^3.4.21"
+  }
+}
