@@ -11,8 +11,8 @@
   
   <title>
     
-      标签 
-       : hexo
+      Nginx-开启http2 
+      
       
     
   </title>
@@ -33,6 +33,10 @@
 
 
   
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
 
   
 
@@ -70,75 +74,71 @@
 
 
       <div class="main">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2025</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="Nginx-开启http2">
-        <div class="time-m-d">03-01</div>
-        <div class="title">
-          <a href="/2025/03/01/Nginx-%E5%BC%80%E5%90%AFhttp2/">
-            
-              <span>Nginx-开启http2</span>
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Chatbox联网问答大揭秘">
-        <div class="time-m-d">03-01</div>
-        <div class="title">
-          <a href="/2025/03/01/Chatbox%E8%81%94%E7%BD%91%E9%97%AE%E7%AD%94%E5%A4%A7%E6%8F%AD%E7%A7%98/">
-            
-              <span>Chatbox联网问答大揭秘</span>
-            
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2022</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="基于Vant的List组件二次封装">
-        <div class="time-m-d">11-18</div>
-        <div class="title">
-          <a href="/2022/11/18/%E5%9F%BA%E4%BA%8EVant%E7%9A%84List%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/">
-            
-              <span>基于Vant的List组件二次封装</span>
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="hexo 常用命令">
-        <div class="time-m-d">11-18</div>
-        <div class="title">
-          <a href="/2022/11/18/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-            
-              <span>hexo 常用命令</span>
-            
-          </a>
-        </div>
-      </div>
-    
+<div class="post">
+  <h3 class="date">
+    Mar 01, 2025
+  </h3>
+  <h1>
+    Nginx-开启http2
+  </h1>
+  <div class="content markdown-body">
+    <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>域名DNS使用的<code>cloudflare</code></li>
+<li>开启<code>cloudflare</code>https代理</li>
+</ul>
+<h2 id="创建证书"><a href="#创建证书" class="headerlink" title="创建证书"></a>创建证书</h2><ol>
+<li>登录<code>cloudflare</code>, 打开站点，在左侧菜单选择 <code>SSL/TLS</code> -&gt; <code>源服务器</code>，然后点击创建证书。</li>
+</ol>
+<p><img src="/images/image-1740815426050.png"></p>
+<ol start="2">
+<li><p>使用默认的私钥类型<code>ras(2048)</code>，点击<code>创建</code><br><img src="/images/image-1740815589294.png"></p>
+</li>
+<li><p>这个时候会生成<code>源证书</code>和<code>私钥</code>，创建文件<code>you-domain.pem</code>和<code>you-domain.key</code>。</p>
+<ol>
+<li>复制<code>源证书</code>的内容到<code>you-domain.pem</code>中；</li>
+<li>复制<code>私钥</code>的内容到<code>you-domain.key</code>中。<br><img src="/images/image-1740815852797.png"></li>
+</ol>
+</li>
+</ol>
+<h2 id="设置加密模式"><a href="#设置加密模式" class="headerlink" title="设置加密模式"></a>设置加密模式</h2><blockquote>
+<p>需要将<code>Cloudflare</code>连接服务器的加密模式设置成<code>完全</code>、<code>安全（严格）</code>或者<code>严格（仅 SSL 源服务器拉取）</code>。</p>
+</blockquote>
+<p>操作入口： 左侧菜单：<code>SSL/TLS</code> -&gt; <code>概述</code>，点击<code>配置</code>。<br><img src="/images/image-1740816140596.png"></p>
+<p>选择<code>自定义SSL/TLS</code>，模式可以选<code>完全</code>、<code>安全（严格）</code>或者<code>严格（仅 SSL 源服务器拉取）</code>。<br><img src="/images/image-1740816240558.png"></p>
+<h2 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h2><ol>
+<li><p>把刚才保存的<code>pem</code>和<code>key</code>上传到服务器，一般放在<code>/etc/nginx/certs</code>目录下</p>
+</li>
+<li><p>修改<code>Nginx</code>配置 </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">443</span> ssl http2;</span><br><span class="line">  </span><br><span class="line">  <span class="attribute">ssl_certificate</span> /etc/nginx/certs/you-domain.pem;</span><br><span class="line">  <span class="attribute">ssl_certificate_key</span> /etc/nginx/certs/you-domain.key;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>检查配置，然后重启nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br><span class="line"></span><br><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<p>到此结束…</p>
+
   </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2025/03/01/Chatbox%E8%81%94%E7%BD%91%E9%97%AE%E7%AD%94%E5%A4%A7%E6%8F%AD%E7%A7%98/">OLDER&nbsp;&gt;</a>
+      
+        
+            
 </div>
-
         <div class="footer">
   
     <div class="footer-more">
